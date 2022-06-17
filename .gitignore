@@ -4,7 +4,6 @@ pyvenv.cfg
 
 
 share/
-data/
 .ipynb_checkpoints/
 Scripts/
 Lib/
