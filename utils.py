@@ -87,3 +87,25 @@ def porter_tokenizer(text):
     words = [PorterStemmer().stem(word) for word in words] # obtener la raiz de las palabras
     words = [word for word in words if word not in stopwords_en_porter] # remover las stopwords
     return words
+    
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+wd = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
+
+def get_text_from_url_bbc(url):
+    wd.get(url)
+
+    time.sleep(1)
+
+    soup = BeautifulSoup(wd.page_source)
+    text = soup.find_all('div', {'data-component': 'text-block'}) #(?P<text>\>(.*?)\<)
+    text = reversed(text) 
+    text2 = ""
+    for i in text:
+        try:
+            text2 = i.text+text2
+        except:
+            text2 = ""+text2
+    return text2 

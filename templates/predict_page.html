@@ -36,7 +36,7 @@ body {background-color: whitesmoke;}
 
 <title>MODEL</title>
 <h1 class="title"> MODEL FOR FAKENEWS DETECTION </h1>
-<h2 class="subtitle"> Ingresar Noticias a evaluar: Sin limites de palabras, en ingles </h2>
+<h2 class="subtitle"> DESCRIPCION GENERICA </h2>
 
 <div class="text_and_button">
     <textarea class="text_area_news" id="txa" placeholder="WRITE NEWS" rows="20"></textarea> 
@@ -47,13 +47,28 @@ body {background-color: whitesmoke;}
     <h2>The prediction is: {{ predict }} with PROBA: {{predict_proba}}  </h2>
 </div>
 
-<script> 
+
+<script defer>
+    
 const text_input = document.getElementById("txa") 
 const url_to_page = "http://localhost:5017/reg_model/"
-text_input.value = sessionStorage.getItem("textValue");
+const url_bbc = "www.bbc.com"
+if (sessionStorage.getItem("textValue") == "") {
+    console.log("ENTRO AL IF")
+    text_input.innerHTML = "{{text_news_js}}";
+}
+else { console.log("ENTRO AL ELSE")
+    text_input.value = sessionStorage.getItem("textValue");
+}
 
 function fn_bt() {
+    if (text_input.value.includes(url_bbc)) {
+        location.assign("http://localhost:5017/reg_model_bbc_url/" + text_input.value.replace(/\//g, "_slash_forward_"));
+        sessionStorage.setItem("textValue", "");
+    } 
+    else {
     location.assign("http://localhost:5017/reg_model/" + text_input.value.replace(/\//g, " "));
     sessionStorage.setItem("textValue", text_input.value);
-}    
+    }
+}
 </script>
