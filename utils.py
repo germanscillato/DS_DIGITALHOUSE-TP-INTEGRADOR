@@ -1,52 +1,19 @@
-
-import os
-from os import path
 import time
 import re
 
 import pandas as pd
 import numpy as np
 
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap, LinearSegmentedColormap
-import seaborn as sns
 
-import requests
 import warnings
 
 from nltk.tokenize import word_tokenize
-from nltk import RegexpTokenizer
-from nltk.stem.snowball import SnowballStemmer
+
 from nltk.stem import PorterStemmer
-from nltk.stem import LancasterStemmer
+
 from nltk.corpus import stopwords
 
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics import roc_curve
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.decomposition import TruncatedSVD
-from sklearn.model_selection import cross_val_score, StratifiedKFold
-from sklearn.ensemble import AdaBoostClassifier, ExtraTreesClassifier , RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn import tree
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report, confusion_matrix
-
-
-from PIL import Image
-
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-
-from tqdm import tqdm
-
-from lime.lime_tabular import LimeTabularExplainer
-
-from xgboost import XGBClassifier
+from sklearn.metrics import confusion_matrix
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
